@@ -1,0 +1,3 @@
+@echo off
+echo Abriendo la presentacion en tu navegador por defecto...
+start "" "Linea_de_Tiempo.html"

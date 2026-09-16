@@ -1,0 +1,450 @@
+/* ULTRA TECH SCIFI AESTHETIC - VERTICAL PRESENTATION */
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-blue: #0066ff;
+  --neon-purple: #7000ff;
+  --dark-bg: #030712;
+  --grid-color: rgba(0, 243, 255, 0.05);
+}
+
+html, body { 
+  margin:0; padding:0; height:100%; overflow:hidden; 
+  font-family: 'Outfit', sans-serif; 
+  background: var(--dark-bg); 
+  color: #e2e8f0; 
+  cursor: none;
+}
+
+/* Custom Cursor */
+#cursor {
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 50%;
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
+}
+#cursor-blur {
+  height: 350px;
+  width: 350px;
+  background-color: rgba(112, 0, 255, 0.15); /* Purple glow */
+  border-radius: 50%;
+  position: fixed;
+  filter: blur(80px);
+  z-index: 9998;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: all 0.05s linear;
+}
+
+/* Backgrounds: Grid & Scanlines */
+.tech-grid {
+  position: fixed; width: 100%; height: 100%; z-index: -3;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+}
+.scanlines {
+  position: absolute; width: 100%; height: 100%; z-index: 100;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 4px, 3px 100%;
+  pointer-events: none;
+}
+#tsparticles { position:fixed; width:100%; height:100%; z-index:-2; }
+
+/* Typography */
+h1, h2, h3 { font-family: 'Chakra Petch', sans-serif; text-transform: uppercase; }
+p, span, .date-badge, .hud-text { font-family: 'Share Tech Mono', monospace; }
+
+/* Vertical Presentation Container */
+#presentation-container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+  z-index: 10;
+}
+
+/* Scrollbar */
+#presentation-container::-webkit-scrollbar { width: 8px; }
+#presentation-container::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
+#presentation-container::-webkit-scrollbar-track { background: var(--dark-bg); }
+
+/* Common Slide Styling */
+.slide {
+  width: 100%;
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Intro Slide */
+.intro-slide {
+  text-align: center;
+}
+
+.hud-box {
+  border: 1px solid var(--neon-cyan);
+  padding: 5px 15px; margin-bottom: 20px;
+  background: rgba(0, 243, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+.hud-text { color: var(--neon-cyan); font-size: 1.2rem; }
+
+.tech-title {
+  font-size: 5rem; font-weight: 700; margin: 0; line-height: 1.2;
+  color: #fff; text-shadow: 0 0 10px var(--neon-blue);
+}
+
+/* Glitch Effect */
+.glitch {
+  position: relative; display: inline-block; color: var(--neon-cyan);
+}
+.glitch::before, .glitch::after {
+  content: attr(data-text); position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%; background: var(--dark-bg);
+}
+.glitch::before {
+  left: 3px; text-shadow: -2px 0 red;
+  clip: rect(24px, 550px, 90px, 0); animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+.glitch::after {
+  left: -3px; text-shadow: -2px 0 blue;
+  clip: rect(85px, 550px, 140px, 0); animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+@keyframes glitch-anim {
+  0% { clip: rect(15px, 9999px, 9px, 0); }
+  20% { clip: rect(110px, 9999px, 51px, 0); }
+  40% { clip: rect(66px, 9999px, 15px, 0); }
+  60% { clip: rect(48px, 9999px, 100px, 0); }
+  80% { clip: rect(114px, 9999px, 69px, 0); }
+  100% { clip: rect(16px, 9999px, 122px, 0); }
+}
+@keyframes glitch-anim-2 {
+  0% { clip: rect(65px, 9999px, 100px, 0); }
+  20% { clip: rect(12px, 9999px, 45px, 0); }
+  40% { clip: rect(85px, 9999px, 78px, 0); }
+  60% { clip: rect(20px, 9999px, 10px, 0); }
+  80% { clip: rect(100px, 9999px, 90px, 0); }
+  100% { clip: rect(40px, 9999px, 15px, 0); }
+}
+
+.tech-subtitle {
+  font-size: 1.4rem; color: #a0aec0; margin-top: 1.5rem;
+  letter-spacing: 2px;
+}
+
+/* Scroll Prompt */
+.scroll-prompt {
+  position: absolute; bottom: 8%; display: flex; flex-direction: column;
+  align-items: center; gap: 15px; color: var(--neon-cyan);
+}
+.line-down {
+  width: 2px; height: 50px; background: var(--neon-cyan);
+  animation: dropLine 1.5s infinite;
+}
+@keyframes dropLine {
+  0% { transform: translateY(-10px) scaleY(0); transform-origin: top; }
+  50% { transform: translateY(0) scaleY(1); transform-origin: top; }
+  50.1% { transform-origin: bottom; }
+  100% { transform: translateY(10px) scaleY(0); transform-origin: bottom; }
+}
+
+/* Data Slide Styling */
+.data-slide {
+  padding: 5vh 5vw;
+  box-sizing: border-box;
+}
+
+.tech-panel {
+  background: rgba(10, 15, 30, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(0, 102, 255, 0.3);
+  padding: 4rem; width: 100%; height: 100%;
+  max-width: none;
+  position: relative; 
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(112, 0, 255, 0.1);
+  display: flex; gap: 5rem; align-items: center;
+  clip-path: polygon(60px 0, 100% 0, 100% calc(100% - 60px), calc(100% - 60px) 100%, 0 100%, 0 60px);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Mouse tracking glow on tech panel */
+.tech-panel::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(
+    800px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(112, 0, 255, 0.12),
+    transparent 40%
+  );
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* HUD corners */
+.hud-corner {
+  position: absolute; width: 50px; height: 50px;
+  border-color: var(--neon-cyan); border-style: solid; border-width: 0;
+}
+.top-left { top: 20px; left: 20px; border-top-width: 4px; border-left-width: 4px; }
+.top-right { top: 20px; right: 20px; border-top-width: 4px; border-right-width: 4px; }
+.bottom-left { bottom: 20px; left: 20px; border-bottom-width: 4px; border-left-width: 4px; }
+.bottom-right { bottom: 20px; right: 20px; border-bottom-width: 4px; border-right-width: 4px; }
+
+.slide-img-container {
+  flex-shrink: 0;
+  width: 40vw; 
+  height: 60vh;
+  max-width: 600px;
+  max-height: 600px;
+  position: relative;
+}
+.slide-img-container::before {
+  content: ''; position: absolute; top: -10px; left: -10px; right: -10px; bottom: -10px;
+  border: 1px dashed var(--neon-cyan); opacity: 0.5; animation: spin 20s linear infinite;
+}
+
+@keyframes spin { 100% { transform: rotate(360deg); } }
+
+.slide-img { 
+  width: 100%; height: 100%; object-fit: cover; 
+  border: 2px solid var(--neon-cyan);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tech-panel:hover .slide-img {
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+}
+
+.slide-text-content { 
+  display: flex; flex-direction: column; flex-grow: 1;
+}
+
+.slide-date { 
+  color: #fff; background: rgba(0, 102, 255, 0.2); backdrop-filter: blur(5px);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  padding: 5px 15px; display: inline-block; 
+  width: max-content; margin-bottom: 1.5rem; font-size: 1.4rem; letter-spacing: 2px;
+  border-left: 5px solid var(--neon-cyan);
+}
+.slide-title { 
+  color: var(--neon-cyan); margin-bottom: 1.5rem; font-size: 2.2rem; text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); line-height: 1.1; font-family: 'Chakra Petch', sans-serif;
+}
+.slide-desc { 
+  color: #cbd5e1; line-height: 1.7; font-size: 1.2rem; font-weight: 300;
+}
+
+/* Timeline Vertical Progress Indicator */
+.progress-indicator {
+  position: fixed;
+  right: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 50;
+}
+.progress-dot {
+  width: 10px; height: 10px; background: transparent; border: 2px solid var(--neon-blue);
+  border-radius: 50%; transition: all 0.3s;
+}
+.progress-dot.active {
+  background: var(--neon-cyan); box-shadow: 0 0 10px var(--neon-cyan); border-color: var(--neon-cyan);
+  transform: scale(1.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1000px) {
+  .tech-panel { flex-direction: column; text-align: center; padding: 2rem; }
+  .slide-img-container { width: 250px; height: 250px; margin: 0 auto 2rem auto; }
+  .tech-title { font-size: 3.5rem; }
+  .slide-date { margin: 0 auto 1.5rem auto; }
+  .slide-title { font-size: 2.2rem; }
+  .slide-desc { font-size: 1.1rem; }
+}
+
+/* --- ENTRANCE ANIMATIONS (Triggered by .in-view class) --- */
+
+.tech-panel {
+  opacity: 0;
+  transform: scale(0.95) translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.slide.in-view .tech-panel,
+.modal .tech-panel {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.slide.in-view .tech-panel {
+  animation: floatPanel 6s ease-in-out infinite alternate 1s;
+}
+
+.slide-img-container {
+  opacity: 0;
+  transform: translateX(-100px) rotate(-5deg);
+  transition: opacity 0.8s ease-out 0.2s, transform 0.8s ease-out 0.2s;
+}
+
+.slide.in-view .slide-img-container,
+.modal .slide-img-container {
+  opacity: 1;
+  transform: translateX(0) rotate(0);
+}
+
+.slide-text-content {
+  opacity: 0;
+  transform: translateX(100px);
+  transition: opacity 0.8s ease-out 0.4s, transform 0.8s ease-out 0.4s;
+}
+
+.slide.in-view .slide-text-content,
+.modal .slide-text-content {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.hud-corner {
+  opacity: 0;
+  transition: opacity 0.3s ease-in 0.8s;
+}
+
+.slide.in-view .hud-corner {
+  opacity: 1;
+  animation: blinkCorner 2s infinite alternate;
+}
+
+/* Continuous Animations */
+@keyframes floatPanel {
+  0% { transform: translateY(0); box-shadow: 0 0 50px rgba(0, 243, 255, 0.1); }
+  100% { transform: translateY(-10px); box-shadow: 0 0 80px rgba(0, 243, 255, 0.3); }
+}
+
+@keyframes blinkCorner {
+  0%, 100% { border-color: var(--neon-cyan); opacity: 1; }
+  50% { border-color: transparent; opacity: 0.3; }
+}
+
+/* Modal Styles */
+.modal {
+  position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+  z-index: 1000; display: flex; justify-content: center; align-items: center;
+  transition: opacity 0.4s ease;
+}
+.modal.hidden {
+  opacity: 0; pointer-events: none;
+}
+.modal-backdrop {
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(3, 7, 18, 0.85); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.modal-content {
+  position: relative; z-index: 1001; 
+  width: 95vw; max-width: 1500px; height: 90vh;
+  display: block !important; /* Override flex from tech-panel */
+  overflow: hidden; /* Hide scrollbars from the clip-path container */
+  padding: 5rem;
+  /* Animate in */
+  transform: scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.modal:not(.hidden) .modal-content {
+  transform: scale(1);
+}
+.modal-body {
+  display: flex; gap: 4rem; align-items: flex-start; /* Changed from center to prevent top clipping */
+  height: 100%;
+  overflow-y: auto; /* Scroll inside the body instead of the clipped container */
+  padding-right: 15px; /* Space for scrollbar */
+}
+.modal-body::-webkit-scrollbar { width: 8px; }
+.modal-body::-webkit-scrollbar-thumb { background: var(--neon-cyan); }
+.modal-body::-webkit-scrollbar-track { background: transparent; }
+
+/* Adjust image size in modal to give text more space */
+.modal .slide-img-container {
+  width: 45%;
+  height: auto;
+  max-height: 75vh;
+  max-width: 700px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0; /* Keeps the image visible while scrolling the text */
+}
+.modal .slide-img {
+  height: auto;
+  max-height: 75vh;
+  object-fit: contain; /* Ensures the whole image is visible without cropping */
+}
+.modal .slide-text-content {
+  width: 55%;
+}
+.modal .slide-desc {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.close-btn {
+  position: absolute; top: 20px; right: 20px;
+  background: transparent; color: var(--neon-cyan);
+  border: 1px solid var(--neon-cyan);
+  padding: 5px 10px; cursor: pointer;
+  font-family: 'Share Tech Mono', monospace; font-size: 1.2rem;
+  transition: all 0.3s;
+  z-index: 10;
+}
+.close-btn:hover {
+  background: var(--neon-cyan); color: #000;
+  box-shadow: 0 0 15px var(--neon-cyan);
+}
+
+/* Typing Effect & Slide Trigger */
+.slide-trigger {
+  justify-content: center; text-align: center; cursor: pointer;
+  transition: all 0.3s ease;
+}
+.slide-trigger:hover {
+  box-shadow: 0 0 80px rgba(0, 243, 255, 0.3);
+  transform: scale(1.02) !important; /* override the float animation temporarily */
+}
+.slide-trigger .slide-title {
+  margin: 0; font-size: 2.5rem; display: inline-block;
+  text-transform: none; /* keep exact casing for code look */
+  font-family: 'Share Tech Mono', monospace; /* make it look like terminal */
+}
+.cursor-blink {
+  display: inline-block;
+  width: 15px; height: 35px;
+  background-color: var(--neon-cyan);
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+  margin-left: 5px;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (max-width: 1000px) {
+  .modal-body { flex-direction: column; }
+  .modal-content { padding: 2rem; }
+}

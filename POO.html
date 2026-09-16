@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programación Orientada a Objetos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Share+Tech+Mono&family=Outfit:wght@300;400;500&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- tsParticles library -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div id="cursor"></div>
+    <div id="cursor-blur"></div>
+
+    <div class="tech-grid"></div>
+    <div id="tsparticles"></div>
+
+    <div id="presentation-container">
+        <!-- Slide 0: Intro -->
+        <section class="slide intro-slide">
+            <div class="scanlines"></div>
+            <div class="hud-box">
+                <span class="hud-text">[ SYS.INIT ]</span>
+            </div>
+            <h1 class="tech-title">PROGRAMACIÓN<br><span class="glitch" data-text="ORIENTADA A OBJETOS">ORIENTADA A
+                    OBJETOS</span>
+            </h1>
+            <p class="tech-subtitle">>> DE LA TEORÍA CONCEPTUAL A LA PRÁCTICA LABORAL_</p>
+            <p style="color: var(--secondary); font-family: var(--font-mono); font-size: 0.9rem; margin-top: 2rem;">
+                Emmanuel Hary | Abril Diaz | Keiver Iglesias | Adrian Gomez<br>
+                UNC "Dr. Humberto Fernández Morán"<br>Prof. Michael Huanca</p>
+            <div class="scroll-prompt">
+                <span>[ INICIANDO ]</span>
+                <div class="line-down"></div>
+            </div>
+        </section>
+
+        <!-- JavaScript will inject the rest of the slides here -->
+    </div>
+
+    <!-- Modal for Detailed Info -->
+    <div id="tech-modal" class="modal hidden">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-content tech-panel">
+            <div class="hud-corner top-left"></div>
+            <div class="hud-corner top-right"></div>
+            <div class="hud-corner bottom-left"></div>
+            <div class="hud-corner bottom-right"></div>
+
+            <button class="close-btn" onclick="closeModal()">[X] CLOSE</button>
+
+            <div class="modal-body">
+                <div id="modal-media-container" class="slide-img-container">
+                    <!-- Image or video goes here -->
+                </div>
+
+                <div class="slide-text-content">
+                    <div id="modal-date" class="slide-date"></div>
+                    <h2 id="modal-title" class="slide-title"></h2>
+                    <p id="modal-desc" class="slide-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
