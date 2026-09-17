@@ -271,14 +271,7 @@ p, span, .date-badge, .hud-text { font-family: 'Share Tech Mono', monospace; }
 }
 
 /* Responsive adjustments */
-@media (max-width: 1000px) {
-  .tech-panel { flex-direction: column; text-align: center; padding: 2rem; }
-  .slide-img-container { width: 250px; height: 250px; margin: 0 auto 2rem auto; }
-  .tech-title { font-size: 3.5rem; }
-  .slide-date { margin: 0 auto 1.5rem auto; }
-  .slide-title { font-size: 2.2rem; }
-  .slide-desc { font-size: 1.1rem; }
-}
+
 
 /* --- ENTRANCE ANIMATIONS (Triggered by .in-view class) --- */
 
@@ -444,7 +437,59 @@ p, span, .date-badge, .hud-text { font-family: 'Share Tech Mono', monospace; }
   50% { opacity: 0; }
 }
 
-@media (max-width: 1000px) {
-  .modal-body { flex-direction: column; }
-  .modal-content { padding: 2rem; }
+/* Responsive adjustments for Tablets and Mobile */
+@media (max-width: 1024px) {
+  /* Intro Slide */
+  .tech-title { font-size: 3.5rem; }
+  .tech-subtitle { font-size: 1.1rem; }
+  
+  /* Slide Panels */
+  .tech-panel { 
+    padding: 2.5rem; 
+    clip-path: polygon(30px 0, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0 30px);
+  }
+  .slide-trigger .slide-title { font-size: 1.8rem; }
+  
+  /* Modal */
+  .modal-content { 
+    padding: 2rem; 
+    width: 90vw;
+    height: 85vh;
+  }
+  .modal-body { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 2rem; 
+  }
+  .modal .slide-img-container { 
+    width: 100%; 
+    max-width: 500px;
+    height: auto;
+    max-height: 35vh; 
+    position: relative;
+  }
+  .modal .slide-img { 
+    max-height: 35vh; 
+  }
+  .modal .slide-text-content { 
+    width: 100%; 
+    text-align: center;
+  }
+  .slide-date { margin: 0 auto 1rem auto; font-size: 1.1rem; }
+  .slide-desc { font-size: 1.1rem; text-align: left; }
+  .modal-body::-webkit-scrollbar { width: 4px; }
+  
+  /* Progress Indicator */
+  .progress-indicator { right: 15px; }
+  .progress-dot { width: 8px; height: 8px; }
+}
+
+@media (max-width: 768px) {
+  .tech-title { font-size: 2.5rem; }
+  .tech-subtitle { font-size: 0.9rem; margin-top: 1rem; }
+  .slide-trigger .slide-title { font-size: 1.4rem; }
+  .modal-content { padding: 1.5rem; }
+  .modal .slide-img-container { max-height: 30vh; }
+  .modal .slide-img { max-height: 30vh; }
+  .slide-desc { font-size: 1rem; }
 }
